@@ -1,0 +1,16 @@
+a. 
+FD: D -> B, CE -> A
+Start: 
+	R(A, B, C, D, E), use D -> B
+	R_1(B, D), R_2(A, C, D, E), use CE -> A on R_2
+	R_1(B, D), R_3(A, C, E), R_4(C, D, E), done.
+
+b. FD: A -> E, BC -> A, DE -> B, BC -> E (introduced by transitivity)
+Start: 
+	S(A, B, C, D, E), use A -> E
+	S_1(A, E), S_2(A, B, C, E), use BC -> A on S_2
+	S_1(A, E), S_3(A, B, C), S_4(B, C, D), done. 
+
+c. No functional dependencies exists. 
+d. A -> B, B -> C, C -> D, D -> A. 
+e. A -> B, B -> C, C -> B, A -> D, D -> A. 
