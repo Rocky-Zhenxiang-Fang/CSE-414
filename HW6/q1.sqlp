@@ -1,0 +1,42 @@
+SELECT u.name as city_name
+FROM geo.world x, x.mondial.country y, y.province z,
+CASE WHEN is_array(z.city) THEN z.city
+ELSE [z.city] END u
+WHERE y.name= 'Peru' 
+ORDER BY city_name;
+
+/* 
+Response: 
+Duration of all jobs: 0.433 sec
+
+{ "city_name": "Abancay" }
+{ "city_name": "Arequipa" }
+{ "city_name": "Ayacucho" }
+{ "city_name": "Cajamarca" }
+{ "city_name": "Callao" }
+{ "city_name": "Cerro de Pasco" }
+{ "city_name": "Chachapoyas" }
+{ "city_name": "Chiclayo" }
+{ "city_name": "Chimbote" }
+{ "city_name": "Chincha Alta" }
+{ "city_name": "Cuzco" }
+{ "city_name": "Huancavelica" }
+{ "city_name": "Huancayo" }
+{ "city_name": "Huanuco" }
+{ "city_name": "Huaraz" }
+{ "city_name": "Ica" }
+{ "city_name": "Iquitos" }
+{ "city_name": "Juliaca" }
+{ "city_name": "Lima" }
+{ "city_name": "Moquegua" }
+{ "city_name": "Moyobamba" }
+{ "city_name": "Piura" }
+{ "city_name": "Pucallpa" }
+{ "city_name": "Puerto Maldonado" }
+{ "city_name": "Puno" }
+{ "city_name": "Sullana" }
+{ "city_name": "Tacna" }
+{ "city_name": "Talara" }
+{ "city_name": "Trujillo" }
+{ "city_name": "Tumbes" }
+*/
