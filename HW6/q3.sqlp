@@ -1,0 +1,53 @@
+SELECT r.`#text` as religions, COUNT(*) as num_of_country
+FROM geo.world AS w, w.mondial.country AS c, 
+    (CASE 
+        WHEN is_array(c.religions)
+            THEN c.religions
+        WHEN c.religions IS MISSING
+            THEN []
+        ELSE [c.religions] END) AS r
+GROUP BY r.`#text`
+ORDER BY  num_of_country DESC;  
+
+/*
+Output
+Results:
+Duration of all jobs: 0.184 sec
+{ "num_of_country": 104, "religions": "Roman Catholic" }
+{ "num_of_country": 98, "religions": "Muslim" }
+{ "num_of_country": 67, "religions": "Protestant" }
+{ "num_of_country": 57, "religions": "Christian" }
+{ "num_of_country": 22, "religions": "Christian Orthodox" }
+{ "num_of_country": 16, "religions": "Anglican" }
+{ "num_of_country": 15, "religions": "Buddhist" }
+{ "num_of_country": 14, "religions": "Hindu" }
+{ "num_of_country": 13, "religions": "Jewish" }
+{ "num_of_country": 7, "religions": "Seventh-Day Adventist" }
+{ "num_of_country": 5, "religions": "Baptist" }
+{ "num_of_country": 4, "religions": "Methodist" }
+{ "num_of_country": 3, "religions": "Presbyterian" }
+{ "num_of_country": 3, "religions": "Church of God" }
+{ "num_of_country": 2, "religions": "Mormon" }
+{ "num_of_country": 2, "religions": "United Church" }
+{ "num_of_country": 2, "religions": "Bahai" }
+{ "num_of_country": 1, "religions": "Christian Congregationalist" }
+{ "num_of_country": 1, "religions": "Church Tuvalu" }
+{ "num_of_country": 1, "religions": "Confucianism" }
+{ "num_of_country": 1, "religions": "Coptic Christian" }
+{ "num_of_country": 1, "religions": "Druze" }
+{ "num_of_country": 1, "religions": "Ekalesia Niue" }
+{ "num_of_country": 1, "religions": "Jains" }
+{ "num_of_country": 1, "religions": "Judaism" }
+{ "num_of_country": 1, "religions": "Pentecostal" }
+{ "num_of_country": 1, "religions": "Sikh" }
+{ "num_of_country": 1, "religions": "Taoist" }
+{ "num_of_country": 1, "religions": "African Methodist Episcopal" }
+{ "num_of_country": 1, "religions": "Armenian Apostolic" }
+{ "num_of_country": 1, "religions": "Chondogyo" }
+{ "num_of_country": 1, "religions": "Church Christ" }
+{ "num_of_country": 1, "religions": "Episcopalian" }
+{ "num_of_country": 1, "religions": "Evangelical Alliance" }
+{ "num_of_country": 1, "religions": "Kimbanguist" }
+{ "num_of_country": 1, "religions": "United" }
+{ "num_of_country": 1, "religions": "Uniting Church Australia" }
+*/
