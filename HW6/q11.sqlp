@@ -1,0 +1,68 @@
+USE geoindex;
+LET c_m=(
+        SELECT m.name as m_name, c.name AS country_name
+        FROM country AS c, mountain AS m, split(m.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: mountain_name
+    c_s=(
+        SELECT s.name as s_name, c.name AS country_name
+        FROM country AS c,  sea AS s, split(s.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: sea_name
+    same_m_c=(
+        SELECT DISTINCT c_m1.country_name as name1, c_m2.country_name as name2
+        FROM c_m as c_m1, c_m as c_m2
+        WHERE c_m1.m_name = c_m2.m_name AND c_m1.country_name > c_m2.country_name), -- country with same mountain
+    same_s_c=(
+        SELECT DISTINCT c_s1.country_name as name1, c_s2.country_name as name2
+        FROM c_s as c_s1, c_s as c_s2
+        WHERE c_s1.s_name = c_s2.s_name AND c_s1.country_name > c_s2.country_name) -- country with same sea
+SELECT smc.name1 as first_country, smc.name2 as second_country
+FROM same_s_c as ssc, same_m_c as smc
+WHERE smc.name1 = ssc.name1 AND smc.name2 = ssc.name2;
+
+
+/*
+Output
+Results:
+Duration of all jobs: 0.807 sec
+{ "first_country": "Spain", "second_country": "France" }
+{ "first_country": "Sweden", "second_country": "Norway" }
+{ "first_country": "Chile", "second_country": "Argentina" }
+{ "first_country": "United States", "second_country": "Canada" }
+{ "first_country": "Russia", "second_country": "Georgia" }
+{ "first_country": "North Korea", "second_country": "China" }
+{ "first_country": "Italy", "second_country": "France" }
+*/
+
+
+
+USE geoindex;
+LET c_m=(
+        SELECT m.name as m_name, c.name AS country_name
+        FROM country AS c, mountain AS m, split(m.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: mountain_name
+    c_s=(
+        SELECT s.name as s_name, c.name AS country_name
+        FROM country AS c,  sea AS s, split(s.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: sea_name
+    same_m_c=(
+        SELECT DISTINCT c_m1.country_name as name1, c_m2.country_name as name2, c_m1.m_name as mountains
+        FROM c_m as c_m1, c_m as c_m2
+        WHERE c_m1.m_name = c_m2.m_name AND c_m1.country_name > c_m2.country_name), -- country with same mountain
+    same_s_c=(
+        SELECT DISTINCT c_s1.country_name as name1, c_s2.country_name as name2, c_s1.s_name as seas
+        FROM c_s as c_s1, c_s as c_s2
+        WHERE c_s1.s_name = c_s2.s_name AND c_s1.country_name > c_s2.country_name), -- country with same sea
+    unnest_result=(
+        SELECT smc.mountains, ssc.seas, smc.name1 as first_country, smc.name2 as second_country 
+        FROM same_s_c as ssc, same_m_c as smc
+        WHERE smc.name1 = ssc.name1 AND smc.name2 = ssc.name2
+    )
+SELECT DISTINCT mountains, seas, ur.first_country, ur.second_country
+FROM unnest_result as ur
+LET mountains = (SELECT ur_1.mountains as mountain
+            FROM unnest_result AS ur_1
+            WHERE ur.first_country = ur_1.first_country AND ur.second_country = ur_1.second_country), 
+    seas = (SELECT ur_2.seas as seas
+            FROM unnest_result AS ur_2
+            WHERE ur.first_country = ur_2.first_country AND ur.second_country = ur_2.second_country)
+    ; 
