@@ -1,0 +1,32 @@
+LET c_m=(
+        SELECT m.name as m_name, c.name AS country_name
+        FROM geo.world AS w, w.mondial.country AS c,  w.mondial.mountain AS m, split(m.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: mountain_name
+    c_s=(
+        SELECT s.name as s_name, c.name AS country_name
+        FROM geo.world AS w, w.mondial.country AS c,  w.mondial.sea AS s, split(s.`-country`, " ") as c_code
+        WHERE c.`-car_code` = c_code), -- country_name: sea_name
+    same_m_c=(
+        SELECT DISTINCT c_m1.country_name as name1, c_m2.country_name as name2
+        FROM c_m as c_m1, c_m as c_m2
+        WHERE c_m1.m_name = c_m2.m_name AND c_m1.country_name > c_m2.country_name), -- country with same mountain
+    same_s_c=(
+        SELECT DISTINCT c_s1.country_name as name1, c_s2.country_name as name2
+        FROM c_s as c_s1, c_s as c_s2
+        WHERE c_s1.s_name = c_s2.s_name AND c_s1.country_name > c_s2.country_name) -- country with same sea
+SELECT smc.name1 as first_country, smc.name2 as second_country
+FROM same_s_c as ssc, same_m_c as smc
+WHERE smc.name1 = ssc.name1 AND smc.name2 = ssc.name2;
+
+/**
+Output
+Results:
+Duration of all jobs: 2.33 sec
+{ "first_country": "Russia", "second_country": "Georgia" }
+{ "first_country": "Spain", "second_country": "France" }
+{ "first_country": "Sweden", "second_country": "Norway" }
+{ "first_country": "Chile", "second_country": "Argentina" }
+{ "first_country": "United States", "second_country": "Canada" }
+{ "first_country": "Italy", "second_country": "France" }
+{ "first_country": "North Korea", "second_country": "China" }
+*/
