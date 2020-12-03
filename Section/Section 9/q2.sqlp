@@ -1,0 +1,3 @@
+USE geo;
+SELECT m
+FROM geo.world as w, w.mondial.mountain as m;

@@ -1,0 +1,3 @@
+SELECT DISTINCT x.handle, y.handle
+FROM users x, x.firends xf, users y, y.firends
+WHERE xf = yf AND x.handle  y.handle; 

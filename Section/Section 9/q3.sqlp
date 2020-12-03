@@ -1,0 +1,4 @@
+USE geo;
+SELECT m.name, m.`-type` as type
+FROM geo.world as w, w.mondial.mountain as m
+ORDER BY int(m.height) DESC;

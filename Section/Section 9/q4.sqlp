@@ -1,0 +1,5 @@
+USE geo;
+SELECT m.name, ARRAY_COUNT(count) as count
+FROM geo.world as w, w.mondial.mountain as m, [split(m.`-country`, " ")] as count
+WHERE ARRAY_COUNT(count) >= 1
+ORDER BY ARRAY_COUNT(count) DESC;

@@ -1,0 +1,9 @@
+USE geo;
+SELECT c.name as cname, c_m as mountain_list
+FROM geo.world as w, w.mondial.country as c
+LET c_m = (
+    SELECT 
+    FROM geo.world as w1,w1.mondial.mountain as m1, split(m1.`-country`, " ") as count
+    WHERE c.`-car_code` = count
+)
+;

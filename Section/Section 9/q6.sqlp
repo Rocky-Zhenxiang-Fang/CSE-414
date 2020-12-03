@@ -1,0 +1,3 @@
+SELECT DISTINCT x.home_city as homecity, 
+    (SELECT y.handle  FROM users y  WHERE y.home_city = x.home_city) AS userHandleList
+FROM users x; 
