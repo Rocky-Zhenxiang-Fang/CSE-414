@@ -1,7 +1,7 @@
-SELECT m.name as mountain, m.height AS height, s as country_code, c.name as country_name
-FROM geo.world AS w, w.mondial.mountain AS m, w.mondial.country AS c, split(m.`-country`, " ") as s
-WHERE s = c.`-car_code`
-ORDER BY int(height) DESC; 
+SELECT m.name as mountain, m.height AS height, c.`-car_code` as country_code, c.name as country_name
+FROM geo.world AS w, w.mondial.country AS c, w.mondial.mountain AS m, split(m.`-country`, " ") as s
+WHERE c.`-car_code` = s
+ORDER BY float(height) DESC; 
 
 /**
 Output
