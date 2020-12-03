@@ -1,0 +1,14 @@
+DROP DATAVERSE geoindex IF EXISTS;
+CREATE DATAVERSE geoindex;
+
+USE geoindex;
+CREATE TYPE countryType AS OPEN {
+`-car_code` : string ,
+`-area` : string ,
+population: string
+};
+CREATE DATASET country(countryType)
+PRIMARY KEY `-car_code` ;
+CREATE INDEX countryID ON country( `-car_code` ) TYPE BTREE;
+LOAD DATASET country USING localfs
+(( "path" = "127.0.0.1://C:\\CSE 414\\HW6\\data\\country.adm"),( "format" = "adm" ));
