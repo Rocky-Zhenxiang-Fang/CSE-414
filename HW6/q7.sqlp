@@ -13,6 +13,7 @@ ORDER BY ARRAY_COUNT(seas) DESC
 Output
 Results:
 Duration of all jobs: 1.316 sec
+Output rows: 74
 { "country_code": "R", "seas": [ { "name": "Black Sea" }, { "name": "Sea of Azov" }, { "name": "Baltic Sea" }, { "name": "Barents Sea" }, { "name": "Sibirian Sea" }, { "name": "Arctic Ocean" }, { "name": "Bering Sea" }, { "name": "Pacific Ocean" }, { "name": "Sea of Okhotsk" }, { "name": "Sea of Japan" } ], "country_name": "Russia" }
 { "country_code": "RI", "seas": [ { "name": "Pacific Ocean" }, { "name": "South China Sea" }, { "name": "Indian Ocean" }, { "name": "Andaman Sea" }, { "name": "Malakka Strait" }, { "name": "Sunda Sea" }, { "name": "Sulawesi Sea" } ], "country_name": "Indonesia" }
 { "country_code": "GB", "seas": [ { "name": "North Sea" }, { "name": "The Channel" }, { "name": "Atlantic Ocean" }, { "name": "Norwegian Sea" }, { "name": "Irish Sea" } ], "country_name": "United Kingdom" }

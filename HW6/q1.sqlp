@@ -8,7 +8,7 @@ ORDER BY city_name;
 /* 
 Response: 
 Duration of all jobs: 0.433 sec
-
+Output rows: 30
 { "city_name": "Abancay" }
 { "city_name": "Arequipa" }
 { "city_name": "Ayacucho" }

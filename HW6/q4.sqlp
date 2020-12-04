@@ -15,6 +15,7 @@ GROUP BY e.ethnic;
 Output
 Results:
 Duration of all jobs: 0.303 sec
+Output rows: 262
 { "total_population": 2573656.5, "num_countries": 3, "ethnic_group": "Afar" }
 { "total_population": 3818.5, "num_countries": 1, "ethnic_group": "African descent" }
 { "total_population": 1940905.8, "num_countries": 1, "ethnic_group": "Afro-Asian" }

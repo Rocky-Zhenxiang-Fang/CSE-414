@@ -12,6 +12,7 @@ ORDER BY area DESC
 Output
 Results:
 Duration of all jobs: 0.423 sec
+Output rows: 45
 { "country_code": "H", "country_name": "Hungary", "area": "93030" }
 { "country_code": "AZ", "country_name": "Azerbaijan", "area": "86600" }
 { "country_code": "A", "country_name": "Austria", "area": "83850" }

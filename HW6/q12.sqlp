@@ -35,6 +35,7 @@ WHERE ur.first_country = ur_3.first_country AND ur.second_country = ur_3.second_
 Output
 Results:
 Duration of all jobs: 0.609 sec
+Output rows: 7
 { "mountains": [ { "mountain": "Kasbek" } ], "seas": [ { "sea": "Black Sea" } ], "first_country": "Russia", "second_country": "Georgia" }
 { "mountains": [ { "mountain": "Sulitjelma" } ], "seas": [ { "sea": "Skagerrak" } ], "first_country": "Sweden", "second_country": "Norway" }
 { "mountains": [ { "mountain": "Vignemale" } ], "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Mediterranean Sea" } ], "first_country": "Spain", "second_country": "France" }

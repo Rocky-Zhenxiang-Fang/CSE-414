@@ -7,6 +7,7 @@ ORDER BY float(height) DESC;
 Output
 Results:
 Duration of all jobs: 23.137 sec
+Output rows: 272
 { "country_code": "TJ", "mountain": "Mount Everest", "height": "8848", "country_name": "China" }
 { "country_code": "NEP", "mountain": "Mount Everest", "height": "8848", "country_name": "Nepal" }
 { "country_code": "TJ", "mountain": "K2", "height": "8611", "country_name": "China" }

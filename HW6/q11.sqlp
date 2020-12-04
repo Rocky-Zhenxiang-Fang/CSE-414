@@ -24,6 +24,7 @@ WHERE smc.name1 = ssc.name1 AND smc.name2 = ssc.name2;
 Output
 Results:
 Duration of all jobs: 0.807 sec
+Output rows: 7
 { "first_country": "Spain", "second_country": "France" }
 { "first_country": "Sweden", "second_country": "Norway" }
 { "first_country": "Chile", "second_country": "Argentina" }

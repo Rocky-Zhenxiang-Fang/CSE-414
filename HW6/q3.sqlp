@@ -13,6 +13,7 @@ ORDER BY  num_of_country DESC;
 Output
 Results:
 Duration of all jobs: 0.184 sec
+Output rows: 37
 { "num_of_country": 104, "religions": "Roman Catholic" }
 { "num_of_country": 98, "religions": "Muslim" }
 { "num_of_country": 67, "religions": "Protestant" }

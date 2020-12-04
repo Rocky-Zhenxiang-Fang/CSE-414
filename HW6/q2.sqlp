@@ -12,6 +12,7 @@ ORDER BY c.name;
 Output
 Results:
 Duration of all jobs: 0.266 sec
+Output rows: 238
 { "num_religions": 1, "Country": "Afghanistan", "Population": "22664136" }
 { "num_religions": 3, "Country": "Albania", "Population": "3249136" }
 { "num_religions": 3, "Country": "Algeria", "Population": "29183032" }
